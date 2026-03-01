@@ -9,7 +9,6 @@
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
@@ -22,6 +21,9 @@
                             required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+        <div>
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Remember Me -->
