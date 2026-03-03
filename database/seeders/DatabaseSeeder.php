@@ -21,5 +21,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // ここに実行したいシーダーを順番に並べます
+        $this->call([
+            TypeSeeder::class,
+            // もしMenuSeederも完成しているならここに追加できます
+            MenuSeeder::class,
+        ]);
     }
 }
