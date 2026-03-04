@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'password' => 'password',
         ]);
 
         // ここに実行したいシーダーを順番に並べます
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
             TypeSeeder::class,
             // もしMenuSeederも完成しているならここに追加できます
             MenuSeeder::class,
+            MealRecordSeeder::class,
         ]);
     }
 }
