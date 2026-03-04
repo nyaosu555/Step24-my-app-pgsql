@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -44,5 +45,17 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // リレーション：このユーザーは、複数の献立記録をもつ
+    public function mealRecords(): HasMany
+    {
+        return $this->hasMany(MealRecord::class);
+    }
+
+    // リレーション：このユーザーは、複数のメニュー登録をもつ
+    public function menu(): HasMany
+    {
+        return $this->hasMany(Menu::class);
     }
 }
