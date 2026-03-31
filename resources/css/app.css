@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* スロットの枠（ここから画像がはみ出さないようにする） */
+.slot-container {
+    position: relative;
+    overflow: hidden; /* これが重要：上下に突き出た画像を切る */
+}
+
+/* 各メニュー画像（li） */
+.slot-li {
+    position: absolute;
+    top: 0; /* 必ず 0 にしておく（GSAPの y で位置を決めるため） */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-top: 3px solid red; /* デザイン案にあるオレンジの区切り線 */
+    border-bottom: 3px solid red;
+}
