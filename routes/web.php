@@ -3,6 +3,7 @@
 use App\Http\Controllers\MealRecordController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SlotController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,6 +33,14 @@ Route::middleware('auth')->group(function () {
 
     // メニューの削除
     Route::delete('/menus/{menu}', [MenuController::class, 'destroy'])->name('menus.destroy');
+
+    // スロット画面の表示
+    Route::get('/', [SlotController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('index');
+
+    // 献立の保存登録
+    Route::post('/meal-records', [MealRecordController::class, 'store'])->middleware('auth');
 });
 
 require __DIR__.'/auth.php';
