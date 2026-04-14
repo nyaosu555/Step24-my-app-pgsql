@@ -23,12 +23,33 @@
                 @method('DELETE')
                 {{-- <button type="submit" class="p-2 text-gray-800 hover:text-red-500 transition"> --}}
                 {{-- submitだと勝手に送信されてしまうのでbuttonに変更する --}}
-                <button type="button" class="p-2 text-gray-800 hover:text-red-500 transition delete-individual-btn" data-name="{{ $menu->name }}">
+                {{-- <button type="button" class="p-2 text-gray-800 hover:text-red-500 transition delete-individual-btn" data-name="{{ $menu->name }}"> --}}
                     {{-- ゴミ箱アイコン（SVG） --}}
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    {{-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                     </svg>
-                </button>
+                </button> --}}
+                {{-- @can('admin')
+                        <a href="{{ route('menus.index') }}" class="flex items-center hover:opacity-70"><span class="mr-1">⬆️</span>メニュー管理</a>
+                    @else
+                        <button disabled class="flex items-center opacity-30 cursor-not-allowed" title="管理者権限が必要です"><span class="mr-1">⬆️</span>メニュー管理（制限中）</a>
+                    @endcan --}}
+
+                @can('admin')
+                    <button type="button" class="p-2 text-gray-800 hover:text-red-500 transition delete-individual-btn" data-name="{{ $menu->name }}">
+                        {{-- ゴミ箱アイコン（SVG） --}}
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                    </button>
+                @else
+                    <button disabled class="p-2 text-gray-800 hover:text-red-500 transition delete-individual-btn cursor-not-allowed" title="管理者権限が必要です">
+                        {{-- ゴミ箱アイコン（SVG） --}}
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                    </button>
+                @endcan
             </form>
         </div>
     @endforeach

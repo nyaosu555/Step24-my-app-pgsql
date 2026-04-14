@@ -38,10 +38,6 @@
         class="relative bg-white rounded-[2em] shadow-2xl p-8 max-w-sm w-full text-center border-4"
         :class="mode === 'confirm' ? 'border-red-500' : 'border-[#F0BA32]'">
 
-        <div class="text-4xl mb-4">
-            <span x-text="mode === 'confirm' ? '⚠️' : '💡'"></span>
-        </div>
-
         <p class="text-gray-800 font-bold text-lg mb-6" x-text="message"></p>
 
         <div class="flex justify-center gap-4">

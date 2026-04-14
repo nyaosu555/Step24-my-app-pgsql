@@ -15,7 +15,7 @@
             </h2>
 
             {{-- 2. タブのスイッチ --}}
-            <div class="flex justify-center space-x-8 border-b border-gray-200 mb-8">
+            <div class="flex justify-start space-x-8 border-b border-gray-200 mb-8">
                 <button
                     @click="tab = 'create'"
                     :class="tab === 'create' ? 'border-b-2 border-orange-500 text-orange-600 font-bold' : 'text-gray-400' "

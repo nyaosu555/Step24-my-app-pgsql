@@ -242,34 +242,42 @@ if(saveBtn) {
                             //     saveBtn.style.pointerEvents = 'none';
                             //     saveBtn.style.opacity = '0.3';
                             // }
-                            if(response.status === 200) {
-                                saveBtn.style.pointerEvents = 'none';
-                                saveBtn.style.opacity = '0.3';
+                            if (response.status === 200) {
+    saveBtn.style.pointerEvents = 'none';
+    saveBtn.style.opacity = '0.3';
 
-                                // 2. 自作フラッシュメッセージを「手動」で表示させる
-                                const messageBox = document.getElementById('flash-message');
-                                if (messageBox) {
-                                    // メッセージ内容と色（クラス）を直接書き換える
-                                    messageBox.textContent = '今日の献立を保存しました！';
-                                    console.log(messageBox);
+    const messageBox = document.getElementById('flash-message');
+    const flashIcon = document.getElementById('flash-icon'); // アイコン用のID
+    const flashText = document.getElementById('flash-text'); // テキスト用のID
 
-                                    // もし以前の danger クラスが残っていたら success 用に差し替える
-                                    messageBox.classList.remove('bg-red-100', 'border-red-700', 'text-red-800');
-                                    messageBox.classList.add('bg-green-100', 'border-green-700', 'text-green-800');
+    if (messageBox && flashIcon && flashText) {
+        // 文字列だけを書き換える（アイコンは消さない）
+        flashText.textContent = '今日の献立を保存しました！';
 
-                                    // アニメーション開始
-                                    requestAnimationFrame(() => {
-                                        messageBox.classList.remove('-translate-y-full', 'opacity-0');
-                                        messageBox.classList.add('translate-y-0', 'opacity-100');
-                                    });
+        // 成功時のアイコン(SVG)をセット
+        flashIcon.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 flex-shrink-0">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+        `;
 
-                                    // 5秒後に自動で消す
-                                    setTimeout(() => {
-                                        messageBox.classList.remove('opacity-100', 'translate-y-0');
-                                        messageBox.classList.add('opacity-0', '-translate-y-full');
-                                    }, 7000);
-                                }
-                            }
+        // クラスの差し替え
+        messageBox.classList.remove('bg-red-100', 'border-red-700', 'text-red-800');
+        messageBox.classList.add('bg-green-100', 'border-green-700', 'text-green-800');
+
+        // アニメーション開始
+        requestAnimationFrame(() => {
+            messageBox.classList.remove('-translate-y-full', 'opacity-0');
+            messageBox.classList.add('translate-y-0', 'opacity-100');
+        });
+
+        // 自動で消す（5秒〜7秒後）
+        setTimeout(() => {
+            messageBox.classList.remove('opacity-100', 'translate-y-0');
+            messageBox.classList.add('opacity-0', '-translate-y-full');
+        }, 7000);
+    }
+}
                         } catch (error) {
                             console.error('保存エラー', error);
 
