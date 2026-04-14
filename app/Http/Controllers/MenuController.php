@@ -47,7 +47,6 @@ class MenuController extends Controller
         return redirect()->route('menus.index')->with([
             'message' => 'メニューを登録しました',
             'type' => 'success',
-
             ]);
     }
 

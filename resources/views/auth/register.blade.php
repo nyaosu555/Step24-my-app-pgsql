@@ -5,7 +5,7 @@
         <!-- Name -->
         <div class="text-left">
             <x-input-label for="name" :value="__('ユーザー名')" class="text-[#DA5019] font-bold text-lg mb-1" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-text-input id="name" class="block mt-1 w-full placeholder-gray-300" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="山田  太郎" />
             {{-- <x-input-error :messages="$errors->get('name')" class="mt-2" /> --}}
             @error('name')
                     <p class="mt-2 text-red-500 font-bold text-xs text-left">{{ $message}}</p>
@@ -15,7 +15,7 @@
         <!-- Email Address -->
         <div class="text-left mt-4">
             <x-input-label for="email" :value="__('Email')" class="text-[#DA5019] font-bold text-lg mb-1" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-text-input id="email" class="block mt-1 w-full placeholder-gray-300" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="test" />
             {{-- <x-input-error :messages="$errors->get('email')" class="mt-2" /> --}}
             @error('email')
                     <p class="mt-2 text-red-500 font-bold text-xs text-left">{{ $message}}</p>
